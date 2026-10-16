@@ -108,10 +108,28 @@ footer{margin-top:clamp(4rem,9vw,7rem);border-top:1px solid var(--rule);padding:
 footer a{color:var(--muted)}
 
 @media (max-width:560px){
+  header.mast{padding:2.25rem 0 1.75rem}
+  .mast-row{margin-top:1rem;gap:.75rem}
+  .contact{flex-direction:column;gap:.5rem}
+  .contact a{padding:.15rem 0}
+  section.group{padding-top:2.75rem}
+  .group-head{grid-template-columns:1fr;gap:.15rem;margin-bottom:1.25rem}
+  .grid.wide{gap:2.25rem}
   .credit{grid-template-columns:1fr}
-  .credit img{max-width:260px}
+  .credit img{max-width:220px}
   .credit .who{text-align:left}
+  /* Verticals become a swipeable row; the next video peeks in from the right */
+  .grid.tall{display:flex;gap:.9rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    margin-inline:calc(-1 * clamp(1.1rem,4vw,2.5rem));padding-inline:clamp(1.1rem,4vw,2.5rem);scroll-padding-inline:clamp(1.1rem,4vw,2.5rem);scrollbar-width:none}
+  .grid.tall::-webkit-scrollbar{display:none}
+  .tall .piece{flex:0 0 74%;scroll-snap-align:start}
   .tall .screen{max-height:none}
+  /* Bigger tap targets on the player */
+  .sp-bar{gap:.35rem;padding:.4rem .5rem}
+  .sp-bar button{padding:.55rem}
+  .sp-bar svg{width:22px;height:22px}
+  .sp-time{font-size:.78rem}
+  .orig{padding:.35rem 0}
 }
 </style>
 </head>
@@ -144,13 +162,13 @@ const WORK = [
 
   { heading: "Video features", note: "Short-form reported pieces", kind: "wide",
     items: [
-      { title: "Hymns for a Moral Reckoning", outlet: "New York City News Service", desc: "A singing rabbi takes on ancestral trauma.",
+      { title: "Hymns for a Moral Reckoning", outlet: "New York City News Service", desc: "A singing rabbi takes on ancestral trauma.", poster: "images/hymns.jpg",
         url: "https://www.nycitynewsservice.com/2025/12/22/hymns-for-a-moral-reckoning-a-singing-rabbi-takes-on-ancestral-trauma/",
         src: [{"src": "videos/hymns-00.mp4", "dur": 106.044}, {"src": "videos/hymns-01.mp4", "dur": 105.981}, {"src": "videos/hymns-02.mp4", "dur": 103.729}] },
       { title: "‘Algorithms are thoughts’: How live coding is rewriting the rules of electronic music", outlet: "amNewYork", poster: "images/live-coding.jpg",
         url: "https://www.amny.com/entertainment/music/how-live-coding-rewriting-rules-electronic-music/",
         src: [{"src": "videos/livecoding-00.mp4", "dur": 148.19}, {"src": "videos/livecoding-01.mp4", "dur": 148.19}, {"src": "videos/livecoding-02.mp4", "dur": 148.19}, {"src": "videos/livecoding-03.mp4", "dur": 148.16}] },
-      { title: "The Ultimate Knicks Watch Party, as Seen by the City’s Cameras", outlet: "Ackerley Creative",
+      { title: "The Ultimate Knicks Watch Party, as Seen by the City’s Cameras", outlet: "Ackerley Creative", poster: "images/knicks.jpg",
         url: "https://www.youtube.com/watch?v=ham1jMHJNnU",
         src: [{"src": "videos/knicks-00.mp4", "dur": 103.395}, {"src": "videos/knicks-01.mp4", "dur": 103.395}, {"src": "videos/knicks-02.mp4", "dur": 103.358}] }
     ] },
@@ -166,11 +184,11 @@ const WORK = [
 
   { heading: "Vertical videos", note: "News for social feeds", kind: "tall",
     items: [
-      { title: "‘DE-ICE Nassau County’ rally draws pro-ICE counter-protest along Sunrise Highway", outlet: "Long Island Press, an amNewYork affiliate",
+      { title: "‘DE-ICE Nassau County’ rally draws pro-ICE counter-protest along Sunrise Highway", outlet: "Long Island Press, an amNewYork affiliate", poster: "images/de-ice-nassau.jpg",
         url: "https://www.instagram.com/p/DVMtQvIFetI/", src: "videos/de-ice-nassau.mp4" },
-      { title: "Montefiore nurses join NYC hospital strike over staffing and safety concerns", outlet: "Bronx Times, an amNewYork affiliate",
+      { title: "Montefiore nurses join NYC hospital strike over staffing and safety concerns", outlet: "Bronx Times, an amNewYork affiliate", poster: "images/nurses-strike.jpg",
         url: "https://www.instagram.com/reel/DUJHmcCDmtw/", src: "videos/nurses-strike.mp4" },
-      { title: "The Ukrainian Army’s Forced Conscription Problem is Unfolding on Social Media", outlet: "Kins",
+      { title: "The Ukrainian Army’s Forced Conscription Problem is Unfolding on Social Media", outlet: "Kins", poster: "images/ukraine-conscription.jpg",
         url: "https://vimeo.com/1086854630/fc1795ef87", src: "videos/ukraine-conscription.mp4" }
     ] },
 
@@ -219,7 +237,9 @@ function partsPlayer(screen, parts, title, poster){
   vids.forEach(bind);
   function go(i,t,autoplay){
     if(i!==cur){
-      if(queued===i){ [a,b]=[b,a]; } else { a.src=parts[i].src; }
+      /* In iPhone native full screen, keep the same element so playback stays full screen */
+      if(a.webkitDisplayingFullscreen){ a.src=parts[i].src; if(queued===i){ b.removeAttribute("src"); b.load(); } }
+      else if(queued===i){ [a,b]=[b,a]; } else { a.src=parts[i].src; }
       queued=-1; cur=i;
       vids.forEach(v=>{v.classList.toggle("on",v===a); if(v!==a) v.pause();});
     }
