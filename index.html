@@ -158,9 +158,6 @@ footer a{color:var(--muted)}
 <script>
 /* Add a video by setting `src` to the uploaded file's URL. Empty src shows a placeholder with a link to the original. */
 const WORK = [
-  { heading: "Documentary", kind: "credit",
-    items: [{ title: "Love Machina", year: "2024", note: "Sundance Official Selection", role: "Production Coordinator", poster: "images/love-machina-poster.jpg" }] },
-
   { heading: "Video features", note: "Short-form reported pieces", kind: "wide",
     items: [
       { title: "Hymns for a Moral Reckoning", outlet: "New York City News Service", desc: "A singing rabbi takes on ancestral trauma.", poster: "images/hymns.jpg",
@@ -174,14 +171,16 @@ const WORK = [
         src: [{"src": "videos/knicks-00.mp4", "dur": 103.395}, {"src": "videos/knicks-01.mp4", "dur": 103.395}, {"src": "videos/knicks-02.mp4", "dur": 103.358}] }
     ] },
 
-  { heading: "Video Essays", kind: "wide",
-    ledeTitle: "No Games in Moscow", lede: "is a doc series investigating systemic abuse in figure skating through the 2022 Olympic doping scandal.",
-    items: [
-      { title: "Ep. 1: Behind the Doping of Kamila Valieva", outlet: "Kins", poster: "images/no-games-ep1.jpg", url: "https://youtu.be/Yzj9iem3VAs",
-        src: [{"src": "videos/ngim1-00.mp4", "dur": 137.604}, {"src": "videos/ngim1-01.mp4", "dur": 137.604}, {"src": "videos/ngim1-02.mp4", "dur": 137.604}, {"src": "videos/ngim1-03.mp4", "dur": 137.604}, {"src": "videos/ngim1-04.mp4", "dur": 137.604}, {"src": "videos/ngim1-05.mp4", "dur": 137.604}, {"src": "videos/ngim1-06.mp4", "dur": 137.604}, {"src": "videos/ngim1-07.mp4", "dur": 137.604}, {"src": "videos/ngim1-08.mp4", "dur": 137.604}, {"src": "videos/ngim1-09.mp4", "dur": 137.604}, {"src": "videos/ngim1-10.mp4", "dur": 137.591}] },
-      { title: "Ep. 2: Dr. Shvetsky & the Sino-Russian Doping Kerfuffle", outlet: "Kins", poster: "images/no-games-ep2.jpg", url: "https://youtu.be/Tizo4yfe1dA",
-        src: [{"src": "videos/ngim2-00.mp4", "dur": 134.509}, {"src": "videos/ngim2-01.mp4", "dur": 134.509}, {"src": "videos/ngim2-02.mp4", "dur": 134.509}, {"src": "videos/ngim2-03.mp4", "dur": 134.509}, {"src": "videos/ngim2-04.mp4", "dur": 134.509}, {"src": "videos/ngim2-05.mp4", "dur": 134.509}, {"src": "videos/ngim2-06.mp4", "dur": 134.509}, {"src": "videos/ngim2-07.mp4", "dur": 134.509}, {"src": "videos/ngim2-08.mp4", "dur": 134.509}] }
-    ] },
+  { heading: "Reporting", kind: "writing",
+    items: [{ title: "The Mamdani Administration Moves Forward with Building Megajail in Chinatown", outlet: "Prism",
+      url: "https://prismreports.org/2026/01/28/chinatown-jail-construction-mamdani/" },
+    { title: "‘Algorithms are thoughts’: How live coding is rewriting the rules of electronic music", outlet: "amNewYork",
+      url: "https://www.amny.com/entertainment/music/how-live-coding-rewriting-rules-electronic-music/" },
+    { title: "Skeptics Question Mamdani’s Municipal Grocery Stores. Policy Experts Say They Need to Be Bigger", outlet: "New York City News Service",
+      url: "https://www.nycitynewsservice.com/2025/12/30/skeptics-question-mamdanis-municipal-grocery-stores-policy-experts-say-they-need-to-be-bigger/" }] },
+
+  { heading: "Documentary", kind: "credit",
+    items: [{ title: "Love Machina", year: "2024", note: "Sundance Official Selection", role: "Production Coordinator", poster: "images/love-machina-poster.jpg" }] },
 
   { heading: "Vertical videos", note: "News for social feeds", kind: "tall",
     items: [
@@ -193,13 +192,14 @@ const WORK = [
         url: "https://vimeo.com/1086854630/fc1795ef87", src: "videos/ukraine-conscription.mp4" }
     ] },
 
-  { heading: "Reporting", kind: "writing",
-    items: [{ title: "The Mamdani Administration Moves Forward with Building Megajail in Chinatown", outlet: "Prism",
-      url: "https://prismreports.org/2026/01/28/chinatown-jail-construction-mamdani/" },
-    { title: "‘Algorithms are thoughts’: How live coding is rewriting the rules of electronic music", outlet: "amNewYork",
-      url: "https://www.amny.com/entertainment/music/how-live-coding-rewriting-rules-electronic-music/" },
-    { title: "Skeptics Question Mamdani’s Municipal Grocery Stores. Policy Experts Say They Need to Be Bigger", outlet: "New York City News Service",
-      url: "https://www.nycitynewsservice.com/2025/12/30/skeptics-question-mamdanis-municipal-grocery-stores-policy-experts-say-they-need-to-be-bigger/" }] }
+  { heading: "Video Essays", kind: "wide",
+    ledeTitle: "No Games in Moscow", lede: "is a doc series investigating systemic abuse in figure skating through the 2022 Olympic doping scandal.",
+    items: [
+      { title: "Ep. 1: Behind the Doping of Kamila Valieva", outlet: "Kins", poster: "images/no-games-ep1.jpg", url: "https://youtu.be/Yzj9iem3VAs",
+        src: [{"src": "videos/ngim1-00.mp4", "dur": 137.604}, {"src": "videos/ngim1-01.mp4", "dur": 137.604}, {"src": "videos/ngim1-02.mp4", "dur": 137.604}, {"src": "videos/ngim1-03.mp4", "dur": 137.604}, {"src": "videos/ngim1-04.mp4", "dur": 137.604}, {"src": "videos/ngim1-05.mp4", "dur": 137.604}, {"src": "videos/ngim1-06.mp4", "dur": 137.604}, {"src": "videos/ngim1-07.mp4", "dur": 137.604}, {"src": "videos/ngim1-08.mp4", "dur": 137.604}, {"src": "videos/ngim1-09.mp4", "dur": 137.604}, {"src": "videos/ngim1-10.mp4", "dur": 137.591}] },
+      { title: "Ep. 2: Dr. Shvetsky & the Sino-Russian Doping Kerfuffle", outlet: "Kins", poster: "images/no-games-ep2.jpg", url: "https://youtu.be/Tizo4yfe1dA",
+        src: [{"src": "videos/ngim2-00.mp4", "dur": 134.509}, {"src": "videos/ngim2-01.mp4", "dur": 134.509}, {"src": "videos/ngim2-02.mp4", "dur": 134.509}, {"src": "videos/ngim2-03.mp4", "dur": 134.509}, {"src": "videos/ngim2-04.mp4", "dur": 134.509}, {"src": "videos/ngim2-05.mp4", "dur": 134.509}, {"src": "videos/ngim2-06.mp4", "dur": 134.509}, {"src": "videos/ngim2-07.mp4", "dur": 134.509}, {"src": "videos/ngim2-08.mp4", "dur": 134.509}] }
+    ] }
 ];
 
 function el(tag, cls, text){ const n=document.createElement(tag); if(cls) n.className=cls; if(text!=null) n.textContent=text; return n; }
