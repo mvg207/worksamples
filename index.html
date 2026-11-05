@@ -84,6 +84,7 @@ figcaption{padding-top:.85rem}
 .credit p{margin:.5rem 0 0;color:var(--muted)}
 .credit .who{font-family:var(--display);font-stretch:85%;font-size:1rem;text-align:right}
 .writing{display:block;text-decoration:none;color:var(--ink);padding:.25rem 0 0}
+.writing + .writing{margin-top:1.75rem;padding-top:1.75rem;border-top:1px solid var(--rule)}
 .writing h3{font-family:var(--body);font-weight:600;font-size:clamp(1.4rem,3vw,2rem);line-height:1.2;margin:0;max-width:34ch}
 .writing:hover h3{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.15em}
 .writing p{margin:.5rem 0 0;color:var(--muted)}
@@ -192,9 +193,13 @@ const WORK = [
         url: "https://vimeo.com/1086854630/fc1795ef87", src: "videos/ukraine-conscription.mp4" }
     ] },
 
-  { heading: "Writing", kind: "writing",
+  { heading: "Reporting", kind: "writing",
     items: [{ title: "The Mamdani Administration Moves Forward with Building Megajail in Chinatown", outlet: "Prism",
-      url: "https://prismreports.org/2026/01/28/chinatown-jail-construction-mamdani/" }] }
+      url: "https://prismreports.org/2026/01/28/chinatown-jail-construction-mamdani/" },
+    { title: "‘Algorithms are thoughts’: How live coding is rewriting the rules of electronic music", outlet: "amNewYork",
+      url: "https://www.amny.com/entertainment/music/how-live-coding-rewriting-rules-electronic-music/" },
+    { title: "Skeptics Question Mamdani’s Municipal Grocery Stores. Policy Experts Say They Need to Be Bigger", outlet: "New York City News Service",
+      url: "https://www.nycitynewsservice.com/2025/12/30/skeptics-question-mamdanis-municipal-grocery-stores-policy-experts-say-they-need-to-be-bigger/" }] }
 ];
 
 function el(tag, cls, text){ const n=document.createElement(tag); if(cls) n.className=cls; if(text!=null) n.textContent=text; return n; }
